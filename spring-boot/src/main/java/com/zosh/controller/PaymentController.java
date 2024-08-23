@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +15,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.zosh.exception.OrderException;
 import com.zosh.exception.UserException;
 import com.zosh.modal.Order;
-import com.zosh.modal.User;
 import com.zosh.repository.OrderRepository;
 import com.zosh.response.ApiResponse;
 import com.zosh.response.PaymentLinkResponse;
@@ -24,8 +22,6 @@ import com.zosh.service.OrderService;
 import com.zosh.service.UserService;
 import com.zosh.user.domain.OrderStatus;
 import com.zosh.user.domain.PaymentStatus;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.razorpay.Payment;
 import com.razorpay.PaymentLink;
 import com.razorpay.RazorpayClient;
@@ -53,7 +49,9 @@ public class PaymentController {
 		Order order=orderService.findOrderById(orderId);
 		 try {
 		      // Instantiate a Razorpay client with your key ID and secret
-		      RazorpayClient razorpay = new RazorpayClient("rzp_test_kTsRSaDC8hwztX", "LieoD1s9mxMIv569PcgRDMcU");
+		    //   RazorpayClient razorpay = new RazorpayClient("rzp_test_kTsRSaDC8hwztX", "LieoD1s9mxMIv569PcgRDMcU");
+			  RazorpayClient razorpay = new RazorpayClient("rzp_test_T0PtBgQMtAoUy7", "6Kvreylla5lYU8HWQBQfbj1T");//Manis
+
 
 		      // Create a JSON object with the payment link request parameters
 		      JSONObject paymentLinkRequest = new JSONObject();
@@ -80,7 +78,8 @@ public class PaymentController {
 		      paymentLinkRequest.put("reminder_enable",true);
 
 		      // Set the callback URL and method
-		      paymentLinkRequest.put("callback_url","https://shopwithzosh.vercel.app/payment/"+orderId);
+		    //   paymentLinkRequest.put("callback_url","https://shopwithzosh.vercel.app/payment/"+orderId);
+		      paymentLinkRequest.put("callback_url","http://localhost:3000/payments"+orderId);
 		      paymentLinkRequest.put("callback_method","get");
 
 		      // Create the payment link using the paymentLink.create() method

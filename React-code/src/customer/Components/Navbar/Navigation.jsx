@@ -10,6 +10,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import { navigation } from "../../../config/navigationMenu";
+import logo from '../assets/logo.png';
 import AuthModal from "../Auth/AuthModal";
 import { useDispatch, useSelector } from "react-redux";
 import { deepPurple } from "@mui/material/colors";
@@ -265,9 +266,9 @@ export default function Navigation() {
                 <Link to="/">
                   <span className="sr-only">Your Company</span>
                   <img
-                    src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png"
-                    alt="Shopping"
-                    className="h-8 w-8 mr-2"
+                    src={logo}
+                    alt="Logo"
+                    className="w-32 h-16 object-cover"
                   />
                 </Link>
               </div>

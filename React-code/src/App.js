@@ -12,7 +12,7 @@ function App() {
       
       <Routes>
         <Route path="/*" element={<CustomerRoutes />} />
-        <Route path="/ad/min/*" element={<AdminPannel />} />
+        <Route path="/admin/*" element={<AdminPannel />} />
         
       </Routes>
     </div>
