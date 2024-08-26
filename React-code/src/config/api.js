@@ -1,6 +1,6 @@
 import axios from 'axios';
 // const LOCALHOST='http://localhost:5454'
-const LOCALHOST='shopnest-server-production.up.railway.app'
+const LOCALHOST='https://shopnest-server-production.up.railway.app'
 export const API_BASE_URL = LOCALHOST
 
 const api = axios.create({
